@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "937120811640",
+    "project_id": "ecommerce-7a99a",
+    "storage_bucket": "ecommerce-7a99a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937120811640:android:f9c4ad872b045a75acfb8d",
+        "android_client_info": {
+          "package_name": "com.baabtra.seller_app.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937120811640-vpbubduoqg4tnj3ki0dtd4l51eufus3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnpwMK8_wvyGfHPLx7OH8PZN-FBc7indE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937120811640-vpbubduoqg4tnj3ki0dtd4l51eufus3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
