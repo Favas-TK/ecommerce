@@ -22,7 +22,7 @@ class _DashboardState extends State<Dashboard> {
 
   final List<Widget> _widgets = [
     HomeScreen(),
-    const Viewproduct(),
+    Viewproduct(),
     const Vieworders(),
     const ProfileScreen(),
   ];

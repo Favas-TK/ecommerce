@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:seller_app/viewproduct/view/modalsheet.dart';
+import 'package:seller_app/detailedscreen/view/detailedscreen.dart';
+import 'package:seller_app/viewproduct/view/addproduct.dart';
+
 
 class Viewproduct extends StatelessWidget {
   Viewproduct({super.key});
@@ -13,23 +15,30 @@ class Viewproduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('view product'),
-          elevation: 0,
-        ),
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        //   title: const Text('view product'),
+        //   elevation: 0,
+        //   backgroundColor: Colors.transparent,
+        // ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              context: context,
-              builder: (context) {
-                return Modaltextfield(
-                    // buttonName: 'Save',
-                    // buttonType: true,
-                    );
-              },
-            );
-          },
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (context) => AddProduct(),
+            ),
+          ),
+          // showModalBottomSheet(
+          //   isScrollControlled: true,
+          //   context: context,
+          //   builder: (context) {
+          //     return Modaltextfield(
+          //         // buttonName: 'Save',
+          //         // buttonType: true,
+          //         );
+          //   },
+          // );
+
           child: const Icon(Icons.add),
         ),
         backgroundColor: const Color.fromARGB(255, 217, 216, 212),
@@ -41,28 +50,46 @@ class Viewproduct extends StatelessWidget {
             if (snapshot.hasData) {
               final productItems = snapshot.data!.docs;
               child:
-             return SingleChildScrollView(
+              return SingleChildScrollView(
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 50,
-                    mainAxisSpacing: 25,
-                    // childAspectRatio: .60,
+                    mainAxisSpacing: 50,
+                    mainAxisExtent: 250,
+                    // childAspectRatio: 50,
                   ),
-                  itemCount: 5,
+                  itemCount: productItems.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      title: Image.network(
-                        'https://i.pinimg.com/originals/db/bc/31/dbbc3114f9521ed7d5699071737f5c8e.jpg',
+                    return InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailScreen(
+                            productAxis: productItems[index],
+                          ),
+                        ),
                       ),
-                      subtitle: Column(
-                        children: [
-                          Text(productItems[index]['productName'].toString()),
-                          Text(productItems[index]['description'].toString()),
-                          Text(productItems[index]['price'].toString()),
-                        ],
+                      child: Card(
+                        child: ListTile(
+                          title: Hero(
+                            tag: productItems.hashCode,
+                            child: Image.network(
+                              productItems[index]['image'].toString(),
+                            ),
+                          ),
+                          subtitle: Column(
+                            children: [
+                              Text(productItems[index]['productName']
+                                  .toString()),
+                              Text(productItems[index]['description']
+                                  .toString()),
+                              Text(productItems[index]['price'].toString()),
+                            ],
+                          ),
+                        ),
                       ),
                     );
                   },
