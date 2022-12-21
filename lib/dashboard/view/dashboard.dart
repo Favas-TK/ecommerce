@@ -56,6 +56,7 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
       ),
+
       body: _widgets[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

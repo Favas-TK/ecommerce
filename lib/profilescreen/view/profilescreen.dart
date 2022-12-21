@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:seller_app/login/login.dart';
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -18,11 +17,12 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 ListTile(
                   leading: IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      )),
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
                   trailing: const Icon(
                     Icons.settings,
                     color: Colors.white,
@@ -34,15 +34,18 @@ class ProfileScreen extends StatelessWidget {
                     'https://www.denofgeek.com/wp-content/uploads/2019/02/mcu-1-iron-man.jpg?fit=1200%2C675',
                   ),
                   // ignore: prefer_const_literals_to_create_immutables
-                  child: Stack(children: [
-                    const Align(
+                  child: Stack(
+                    children: const [
+                      Align(
                         alignment: Alignment.bottomRight,
-                        child:  Icon(Icons.edit, color: Colors.amber))
-                  ]),
+                        child: Icon(Icons.edit, color: Colors.amber),
+                      )
+                    ],
+                  ),
                 ),
                 const Text(
                   'saabu',
-                  style:  TextStyle(
+                  style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
@@ -106,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
                                   icon: const Icon(
                                     Icons.navigate_next,
                                     color: Colors.white,
-                                  )),
+                                  ),),
                             ),
                           ],
                         ),
@@ -251,7 +254,8 @@ class ProfileScreen extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Login()));
+                                            builder: (context) =>
+                                                const Login()));
                                   },
                                   icon: const Icon(
                                     Icons.navigate_next,
